@@ -1,0 +1,52 @@
+<div class="page-content">
+    <h2 class="title">Alteração de dados cadastrais</h2>
+    <mat-tab-group #tabgroup>
+      <mat-tab label="Dados Básicos">
+        <div class="personal-data">
+          <div class="info">
+            <mat-form-field style="min-width: 60%;">
+              <input matInput placeholder="Nome" [(ngModel)]="userInfo.name">
+            </mat-form-field>
+            <mat-form-field style="min-width: 60%;">
+              <input matInput placeholder="Email" [(ngModel)]="userInfo.email">
+            </mat-form-field> <br>
+            <!-- <mat-form-field style="min-width: 60%;">
+              <input matInput placeholder="Teste CEP"  mask="00000-000">
+            </mat-form-field> <br> -->
+          </div>
+          <div class="picture">
+            <img class="picture" (click)="logoutInfo()" [src]="userInfo.picture" [style.display]="cropperReady ? null : 'block'" />
+            <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
+              [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+              onlyScaleDown (loadImageFailed)="loadImageFailed()" [style.display]="cropperReady ? null : 'none'"></image-cropper>
+            <input type="file" class="picture_change" id="picture_select" (change)="fileChangeEvent($event)" />
+          </div>
+        </div>
+        <hr>
+        <h2>Funcionalidades Ativas</h2>
+        <mat-checkbox (change)="changedCheckbox('gitHub', checkboxGitHub)" [(ngModel)]="checkboxGitHub">Integração com
+          GitHub
+          (Repositórios)</mat-checkbox> <br>
+        <mat-checkbox (change)="changedCheckbox('files', checkboxFiles)">Gerenciamento de Repositório de Arquivos para
+          Download</mat-checkbox>
+          <hr>
+          <button class="save-button" mat-raised-button color="primary"  (click)='tabgroup.selectedIndex = 2'>Próximo Passo</button>        
+      </mat-tab>
+      <mat-tab label="Integração com GitHub">
+        <div>
+          <mat-form-field style="min-width: 25%;">
+            <input matInput placeholder="Login do GitHub" value="" [(ngModel)]="gitHubLogin">
+          </mat-form-field> <br>
+          <mat-form-field style="min-width: 25%;">
+            <input matInput [type]="showPasswd ? 'text' : 'password'" placeholder="Senha do GitHub" value="" id="gitHubPasswd"
+              [(ngModel)]="gitHubPassword">
+          </mat-form-field>
+          <mat-icon class="show-pass" (mousedown)="showPasswd = !showPasswd" (mouseup)="showPasswd = !showPasswd">remove_red_eye</mat-icon>
+        </div>
+        <div class="footer">
+            <button class="save-button" mat-raised-button color="primary" (click)="saveChanges()">Salvar Alterações</button>
+          </div>
+      </mat-tab>
+    </mat-tab-group>
+  
+  </div>

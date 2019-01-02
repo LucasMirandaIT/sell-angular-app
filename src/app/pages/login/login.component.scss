@@ -1,0 +1,188 @@
+.page-content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.container {
+  min-height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #FFF;
+  color: #fff;
+  font-family: "Comfortaa", "Helvetica", sans-serif;
+}
+
+.login {
+  max-width: 350px;
+  min-height: 500px;
+  margin: 4% auto;
+  background-color: rgba(10, 10, 10, 0.68);
+}
+#login-info {
+  top: -40px;
+  position: relative;
+  text-align: center;
+  width: 77.5%;
+  font-size: 16px;
+}
+
+.login-icon-field {
+  height: 250px;
+  width: 100%;
+}
+
+.login-icon {
+  margin: 50px 65px;
+  width: 160px;
+  margin-left: calc(50% - 80px);
+}
+
+.login-form {
+  padding: 8px 20px 20px;
+  height: 120px;
+  width: 100%;
+}
+
+.username-row {
+  position: relative;
+  height: 40px;
+  width: 88%;
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+}
+
+.password-row {
+  position: relative;
+  height: 40px;
+  width: 88%;
+  border-bottom: 1px solid;
+}
+
+.password-icon,
+.user-icon {
+  margin: 5px;
+}
+
+.password-icon .key-path,
+.user-icon .user-path {
+  fill: rgba(10, 10, 10, 0);
+  stroke: #fff;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  -webkit-animation: dash 3s 0.3s linear forwards;
+  animation: dash 3s 0.3s linear forwards;
+}
+
+.user-icon .user-path {
+  -webkit-animation: dash 3s 0.8s linear forwards;
+  animation: dash 3s 0.8s linear forwards;
+}
+
+input {
+  position: absolute;
+  top: 0px;
+  left: 50px;
+  width: 195px;
+  height: 30px;
+  margin: 5px 0;
+  background: transparent;
+  color: white;
+  border: none;
+}
+
+input:focus,
+button:focus {
+  outline: none;
+}
+
+input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.call-to-action {
+  margin: 22px 0;
+  height: 130px;
+  width: 100%;
+}
+
+button {
+  &#login-button {
+    display: block;
+    width: 240px;
+    height: 40px;
+    padding: 0;
+    margin: 10px 20px 10px;
+    margin-left: calc(50% - 120px);
+    font-weight: 700;
+    color: #fff;
+    background-color: #22c08a;
+    border: none;
+    border-radius: 20px;
+    transition: background-color 0.1s ease-in-out;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+  }
+}
+
+button:hover {
+  background-color: #26d69a;
+}
+
+button:active {
+  background-color: #1eaa7a;
+}
+
+p {
+  display: inline-block;
+  width: 200px;
+  margin: 0 40px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+p a {
+  color: #fff;
+}
+
+label,
+p a:hover {
+  -webkit-cursor: pointer;
+  cursor: pointer;
+}
+
+@-webkit-keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+#loading-login {
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

@@ -1,0 +1,50 @@
+<div class="container">
+    <div id="register" class="register">
+      <div class="image-logo">
+        <img class="logo-circle" src="./assets/img/logo-only-circle.png" />
+        <img class="logo-text" src="./assets/img/logo-only-text-2.png" />
+      </div>
+      <div class="register-form">
+        <p id="register-info">Formulário de Cadastro</p>
+        <div class="form-row">
+          <div style="width: 21vw;">
+            <input id="input" type="text" required [(ngModel)]="registerUser.name" />
+            <label for="input" alt="Nome" placeholder="Nome"></label>
+          </div>
+          <div style="width: 21vw;">
+            <input id="input" type="text" required [(ngModel)]="registerUser.email" />
+            <label for="input" alt="Email" placeholder="Email"></label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div style="width: 21vw;">
+            <input id="input" type="text" required [(ngModel)]="registerUser.username" />
+            <label for="input" alt="Username" placeholder="Username"></label>
+          </div>
+          <div style="width: 21vw; height: calc(3em + 22px);">
+            <input id="input" [type]="showPasswd ? 'text' : 'password'" required [(ngModel)]="registerUser.password" id="gitHubPasswd" />
+            <label for="input" alt="Senha" placeholder="Senha"></label>
+            <mat-icon class="show-pass" (mousedown)="showPasswd = !showPasswd" (mouseup)="showPasswd = !showPasswd">remove_red_eye</mat-icon>
+          </div>
+        </div>
+        <div class="form-row">
+          <div style="width: 21vw;">
+            <select id="admin_select" placeholder="Administrador" [(ngModel)]="registerUser.admin">
+              <option disabled selected>Administrador</option>
+              <option value="true">Sim</option>
+              <option value="false">Não</option>
+            </select>
+          </div>
+          <div style="width: 21vw"></div>
+        </div>
+  
+      </div>
+      <div class="call-to-action">
+        <button id="register-button" type="button" (click)="register(registerUser)">Registrar</button>
+      </div>
+    </div>
+  </div>
+  
+  <div id="loading-login" *ngIf="loading">
+    <app-loading class="loading-content" color="#666" text="Fazendo Login... Por favor Aguarde..."></app-loading>
+  </div>

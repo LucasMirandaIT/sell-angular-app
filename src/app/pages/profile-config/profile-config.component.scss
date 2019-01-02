@@ -1,0 +1,64 @@
+.page-content {
+  padding: 10px;
+  .title {
+    text-align: center;
+  }
+  .picture {
+    height: 15vw;
+    width: 15vw;
+    border-radius: 50%;
+  }
+  .personal-data {
+    display: flex;
+    .info {
+      display: flex;
+      mat-form-field {
+        margin-right: 15px;
+      }
+    }
+    .picture {
+      height: 248px;
+      width: 200px;
+      margin-left: auto;
+      margin-right: 120px;
+      img {
+          margin-left: calc(50% - 50px);
+          height: 200px;
+          margin-bottom: 10px;
+      }
+    }
+  }
+  .save-button {
+    width: 142px;
+    margin-left: calc(50% - 71px);
+  }
+  #picture-select {
+    //   &.active {
+    //     position: relative;
+    //     left: 33%;
+    //     top: -245px;
+    //   }
+  }
+
+  .show-pass {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    left: -26px;
+    &:hover {
+    color: #3f51b5;
+    }
+  }
+
+  image-cropper {
+    position: relative;
+    top: -100%;
+    right: -25%;
+  }
+
+  .mat-tab-label {
+    width: 25% !important;
+  }
+
+}
+
