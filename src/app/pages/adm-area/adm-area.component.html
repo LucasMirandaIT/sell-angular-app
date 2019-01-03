@@ -1,38 +1,6 @@
 <mat-tab-group>
-    <mat-tab label="Aprovação de Usuários Cadastros">
-      <div *ngIf="usersToAproove?.length > 0">
-        <table align="center">
-          <thead>
-              <td style="width: 17vw;">ID</td>
-              <td style="min-width: 12vw;">Nome</td>
-              <td style="min-width: 10vw;">Username</td>
-              <td style="width: 5vw;">Admin</td>
-              <td style="width: 5vw;">Picture</td>
-              <td style="width: 5vw;">Ações</td>
-          </thead>
-          <tbody>
-            <tr *ngFor="let user of usersToAproove">
-              <td>{{user._id}}</td>
-              <td>{{user.name}}</td>
-              <td style="text-align: center">{{user.username}}</td>
-              <td style="text-align: center">{{user.admin}}</td>
-              <td style="text-align: center">
-                <span *ngIf="user.picture">true</span>
-                <span *ngIf="!user.picture">false</span>
-              </td>
-              <td style="text-align: center">
-                <mat-icon style="color: green; cursor: pointer;" (click)="userAproove(user, 'accept')">done</mat-icon>
-                <mat-icon style="color: red; cursor: pointer;" (click)="userAproove(user, 'decline')">close</mat-icon>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div *ngIf="usersToAproove?.length === 0">
-        <h3 style="text-align: center">Não há usuários pendentes de aprovação no momento.</h3>
-      </div>
-    </mat-tab>
-    <mat-tab label="Usuários da Aplicação" style="user-select: none">
+  <mat-tab label="Aprovação de Cadastros">
+    <div *ngIf="usersToAproove?.length > 0">
       <table align="center">
         <thead>
           <td style="width: 17vw;">ID</td>
@@ -43,7 +11,7 @@
           <td style="width: 5vw;">Ações</td>
         </thead>
         <tbody>
-          <tr *ngFor="let user of users">
+          <tr *ngFor="let user of usersToAproove">
             <td>{{user._id}}</td>
             <td>{{user.name}}</td>
             <td style="text-align: center">{{user.username}}</td>
@@ -59,5 +27,52 @@
           </tr>
         </tbody>
       </table>
-    </mat-tab>
-  </mat-tab-group>
+    </div>
+    <div *ngIf="usersToAproove?.length === 0">
+      <h3 style="text-align: center">Não há usuários pendentes de aprovação no momento.</h3>
+    </div>
+  </mat-tab>
+  <mat-tab label="Usuários da Aplicação" style="user-select: none">
+    <table align="center">
+      <thead>
+        <td style="width: 17vw;">ID</td>
+        <td style="min-width: 12vw;">Nome</td>
+        <td style="min-width: 10vw;">Username</td>
+        <td style="width: 5vw;">Admin</td>
+        <td style="width: 5vw;">Picture</td>
+        <td style="width: 5vw;">Ações</td>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{user._id}}</td>
+          <td>{{user.name}}</td>
+          <td style="text-align: center">{{user.username}}</td>
+          <td style="text-align: center">{{user.admin}}</td>
+          <td style="text-align: center">
+            <span *ngIf="user.picture">true</span>
+            <span *ngIf="!user.picture">false</span>
+          </td>
+          <td style="text-align: center">
+            <mat-icon style="color: green; cursor: pointer;" (click)="userAproove(user, 'accept')">done</mat-icon>
+            <mat-icon style="color: red; cursor: pointer;" (click)="userAproove(user, 'decline')">close</mat-icon>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-tab>
+  <mat-tab label="Cadastro de Marcas">
+    <a (click)="openAddBrandModal()">
+      <div class="search-box">
+        <h2 class="search-txt">Adicionar novo...</h2>
+        <a class="search-btn">
+          <mat-icon>add</mat-icon>
+        </a>
+      </div>
+    </a>
+
+    <h2>Marcas Disponíveis no Momento</h2>
+    <ul>
+      <li *ngFor="let brand of brandsDB">{{brand.fipe_name}}</li>
+    </ul>
+  </mat-tab>
+</mat-tab-group>

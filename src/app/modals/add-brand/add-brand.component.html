@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <td>Adicionar</td>
+    <td>Fipe Name</td>
+    <td>Name</td>
+    <td>Key</td>
+    <td>ID</td>
+  </thead>
+  <tbody>
+    <tr *ngFor="let brand of brandsFipe">
+      <td>
+          <mat-checkbox name="{{brand.fipe_name}}" (change)="selectBrand(brand, $event)"></mat-checkbox>
+      </td>
+      <td><span>{{brand.name}}</span></td>
+      <td>{{brand.fipe_name}}</td>
+      <td>{{brand.key}}</td>
+      <td>{{brand.id}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button mat-button mat-raised-button (click)="closeDialog()">Close Modal</button>

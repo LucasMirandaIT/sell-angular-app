@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URL_BACKEND_PROD: 'https://miranda-lucas.herokuapp.com/',
+  URL_BACKEND_PROD: 'https://selling-cars-backend.herokuapp.com/',
   URL_BACKEND_LOCAL: 'http://localhost:3000/',
 };
 

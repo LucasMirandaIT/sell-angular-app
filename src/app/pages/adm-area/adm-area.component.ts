@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
 import { User } from 'src/app/models/user';
 import { ToastrService } from 'ngx-toastr';
+import { CarsService } from 'src/app/services/car.service';
+import { MatDialog } from '@angular/material';
+import { AddBrandModal } from 'src/app/modals/add-brand/add-brand.component';
 
 @Component({
   selector: 'app-adm-area',
@@ -13,11 +16,14 @@ export class AdmAreaComponent implements OnInit {
   users: User[];
   usersToAproove: User[];
 
-  constructor(private profileService: ProfileService, private toastr: ToastrService) { }
+  brandsDB;
+
+  constructor(private profileService: ProfileService, private toastr: ToastrService, private carsService: CarsService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.users = [];
     this.refreshUsers();
+    this.getBrandsDB();
   }
 
   refreshUsers() {
@@ -50,4 +56,52 @@ export class AdmAreaComponent implements OnInit {
       });
     }
   }
+
+  getBrandsDB() {
+    this.carsService.getBrandsDB().toPromise().then((retorno) => {
+      this.brandsDB = retorno;
+    });
+  }
+
+  openAddBrandModal() {
+    const dialogRef = this.dialog.open(AddBrandModal, {
+      width: '60%',
+      height: '80%',
+      data: {dbBrands: this.brandsDB}
+    })
+    dialogRef.afterClosed().subscribe((result) => {
+      if(result) {
+        console.log('CLOSED MODAL');
+        this.addNewBrand(result);
+      }
+    });
+  }
+
+  addNewBrand(newBrand) {
+    for (let i = 0; i < this.brandsDB.length; i++) {
+      for (let j = 0; j < newBrand.length; j++) {
+        if(this.brandsDB[i].fipe_name === newBrand[j].fipe_name) {
+          newBrand.splice(j, 1) //remove o item da posição "i" do array
+        }        
+      }
+    }
+    // for (let i = 0; i < newBrand.length; i++) {
+    //   this.brandsDB.push(newBrand[i]);
+    // }
+    this.carsService.addDBBrand(newBrand).toPromise().then((retorno) => {
+      this.toastr.success('Sucesso!', 'Marcas adicionadas com sucesso!');
+      this.refreshBrandsList();
+    });
+    // this.carsService.addDBBrand(newBrand).toPromise().then((retorno)=> {
+    // })
+  }
+
+  refreshBrandsList() {
+    this.carsService.getBrandsDB().toPromise().then((retorno) => {
+      console.log('BRANDSDB BACK >>>>>>>>>>>>', retorno);
+      this.brandsDB = retorno;
+    });
+  }
+
+
 }

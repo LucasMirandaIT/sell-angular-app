@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import {NgxMaskModule} from 'ngx-mask';
 import { ClipboardModule } from 'ngx-clipboard';
+import { AddBrandModal } from './modals/add-brand/add-brand.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ClipboardModule } from 'ngx-clipboard';
     AdmAreaComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileConfigComponent
+    ProfileConfigComponent,
+    AddBrandModal
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,9 @@ import { ClipboardModule } from 'ngx-clipboard';
 
     BrowserAnimationsModule,
     AppRoutingModule
+  ],
+  entryComponents: [
+    AddBrandModal
   ],
   providers: [
     HttpClientModule,
