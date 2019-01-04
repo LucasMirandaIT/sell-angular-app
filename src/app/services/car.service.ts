@@ -21,7 +21,7 @@ export class CarsService {
     return this.http.get(backEndRoute);
   }
   getBrandsFipe() {
-    return this.http.get('http://fipeapi.appspot.com/api/1/carros/marcas.json');
+    return this.http.get('https://fipeapi.appspot.com/api/1/carros/marcas.json');
   }
 
   addDBBrand(brand) {

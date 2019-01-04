@@ -89,7 +89,7 @@ export class AdmAreaComponent implements OnInit {
     //   this.brandsDB.push(newBrand[i]);
     // }
     this.carsService.addDBBrand(newBrand).toPromise().then((retorno) => {
-      this.toastr.success('Sucesso!', 'Marcas adicionadas com sucesso!');
+      this.toastr.success('Marcas adicionadas com sucesso!', 'Sucesso!');
       this.refreshBrandsList();
     });
     // this.carsService.addDBBrand(newBrand).toPromise().then((retorno)=> {
@@ -97,17 +97,14 @@ export class AdmAreaComponent implements OnInit {
   }
 
   removeBrandFromDB(brand) {
-    console.log('DB REMOVE >>>>>>>', brand);
     this.carsService.removeDBBrand(brand).toPromise().then((retorno: any) => {
-      console.log('RETORNO DELETE >>>>>>', retorno);
-      this.toastr.success(retorno, 'Sucesso!');
+      this.toastr.success(`Marca ${brand.fipe_name} deletada com sucesso!`, 'Sucesso!');
       this.refreshBrandsList();
     })
   }
 
   refreshBrandsList() {
     this.carsService.getBrandsDB().toPromise().then((retorno) => {
-      console.log('BRANDSDB BACK >>>>>>>>>>>>', retorno);
       this.brandsDB = retorno;
     });
   }

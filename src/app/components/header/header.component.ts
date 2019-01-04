@@ -12,8 +12,9 @@ export class HeaderComponent implements OnInit {
 
   userLogged: User;
   isAdmin: boolean;
+  isLojista: boolean;
   showGitHub: boolean;
-  
+
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -28,16 +29,15 @@ export class HeaderComponent implements OnInit {
     } else {
       this.userLogged.picture = this.userLogged.picture;
     }
-    if (this.userLogged.isAdmin) {
-      this.isAdmin = true;
-    }
+    if (this.userLogged.isAdmin) this.isAdmin = true;
+    if (this.userLogged.isLojista) this.isLojista = true;
   }
 
   expandMenu() {
     var myClass = document.getElementsByClassName('page');
     myClass[0].classList.add('navExpanded');
   }
-  
+
   collapseMenu() {
     var myClass = document.getElementsByClassName('page');
     myClass[0].classList.remove('navExpanded');

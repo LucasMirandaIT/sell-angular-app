@@ -20,6 +20,9 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import {NgxMaskModule} from 'ngx-mask';
 import { ClipboardModule } from 'ngx-clipboard';
 import { AddBrandModal } from './modals/add-brand/add-brand.component';
+import { CarsComponent } from './pages/cars/cars.component';
+import { PartsComponent } from './pages/parts/parts.component';
+import { FlipCardComponent } from './components/flip-card/flip-card.component';
 
 
 @NgModule({
@@ -32,7 +35,10 @@ import { AddBrandModal } from './modals/add-brand/add-brand.component';
     LoginComponent,
     RegisterComponent,
     ProfileConfigComponent,
-    AddBrandModal
+    AddBrandModal,
+    CarsComponent,
+    PartsComponent,
+    FlipCardComponent
   ],
   imports: [
     BrowserModule,
