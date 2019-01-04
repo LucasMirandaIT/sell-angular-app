@@ -72,7 +72,7 @@
 
     <h2>Marcas Disponíveis no Momento</h2>
     <ul>
-      <li *ngFor="let brand of brandsDB">{{brand.fipe_name}}</li>
+      <li *ngFor="let brand of brandsDB">{{brand.fipe_name}}  -  <button mat-button mat-raised-button (click)="removeBrandFromDB(brand)">Remover</button></li>
     </ul>
   </mat-tab>
 </mat-tab-group>

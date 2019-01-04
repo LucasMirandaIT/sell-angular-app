@@ -1,10 +1,10 @@
 export class User {
     _id: string;
-    admin: boolean;
+    isAdmin: boolean;
+    isLojista: boolean;
     name: string;
     email: string;
     username: string;
     password: string;
-    permissions: [];
     picture: string;
 }

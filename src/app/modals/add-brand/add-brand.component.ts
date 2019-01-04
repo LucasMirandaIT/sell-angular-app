@@ -27,12 +27,29 @@ export class AddBrandModal implements OnInit {
 
   refreshFipeBrands() {
     this.carsService.getBrandsFipe().toPromise().then((retorno: any) => {
-      this.brandsFipe = retorno;
+      this.checkDiff(retorno);
     });
   }
 
-  checkDiff() {
-    array2.diff(array1);
+  checkDiff(retorno) {
+    let dbBrand = this.modalData.dbBrands;
+    this.brandsFipe = retorno;
+    for (let i = 0; i < dbBrand.length; i++) {
+      for (let j = 0; j < retorno.length; j++) {
+        if(retorno[j].fipe_name === dbBrand[i].fipe_name) {
+          for (let n = 0; n < this.brandsFipe.length; n++) {
+            if(this.brandsFipe[n].fipe_name === dbBrand[i].fipe_name) {
+              this.brandsFipe.splice(n, 1);
+            }            
+          }
+        }        
+      }      
+    }
+    this.brandsFipe.sort((a,b) => {
+      var x = a.name.toLowerCase();
+      var y = b.name.toLowerCase();
+      return x < y ? -1 : x > y ? 1 : 0;
+    })
   }
 
   closeDialog() {

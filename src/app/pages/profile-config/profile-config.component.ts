@@ -34,8 +34,7 @@ export class ProfileConfigComponent implements OnInit {
   }
 
   refreshInfo() {
-    let user = JSON.parse(sessionStorage.getItem('userLogged'));
-    this.userLogged = user[0];
+    this.userLogged = JSON.parse(sessionStorage.getItem('userLogged'));
     if (!this.userLogged.picture) {
       this.userLogged.picture = './assets/img/avatar.png';
     }

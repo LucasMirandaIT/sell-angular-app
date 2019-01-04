@@ -8,10 +8,10 @@ import { environment } from 'src/environments/environment';
 export class CarsService {
 
   brandsDB = [
-    {name: 'AUDI', fipe_name: "Audi", key: "audi-6", id: 6},
-    {name: "BMW", fipe_name: "BMW", key: "bmw-7", id: 7},
-    {name: "CITROEN", fipe_name: "Citroën", key: "citroen-13", id: 13},
-    {name: "FIAT", fipe_name: "Fiat", key: "fiat-21", id: 21}
+    { name: 'AUDI', fipe_name: "Audi", key: "audi-6", id: 6 },
+    { name: "BMW", fipe_name: "BMW", key: "bmw-7", id: 7 },
+    { name: "CITROEN", fipe_name: "Citroën", key: "citroen-13", id: 13 },
+    { name: "FIAT", fipe_name: "Fiat", key: "fiat-21", id: 21 }
   ];
 
   constructor(private http: HttpClient) { }
@@ -25,7 +25,13 @@ export class CarsService {
   }
 
   addDBBrand(brand) {
-      let backEndRoute = environment.URL_BACKEND_PROD + 'brands/insert';
-      return this.http.post(backEndRoute, brand);
+    let backEndRoute = environment.URL_BACKEND_PROD + 'brands/insert';
+    return this.http.post(backEndRoute, brand);
+  }
+
+  removeDBBrand(brand) {
+    console.log('brandID SERVICE>>>>>>', brand);
+    let backEndRoute = environment.URL_BACKEND_PROD + 'brands/remove';
+    return this.http.post(backEndRoute, brand);
   }
 }

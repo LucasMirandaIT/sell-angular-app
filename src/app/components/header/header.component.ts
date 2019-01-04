@@ -21,15 +21,14 @@ export class HeaderComponent implements OnInit {
   }
 
   refreshInfo() {
-    let user = JSON.parse(sessionStorage.getItem('userLogged'));
-    this.userLogged = user[0];
+    this.userLogged = JSON.parse(sessionStorage.getItem('userLogged'));
     console.log('USERLOGGED HEADER >>>>>>>>>>>> ', this.userLogged);
     if (!this.userLogged.picture) {
       this.userLogged.picture = './assets/img/avatar.png';
     } else {
       this.userLogged.picture = this.userLogged.picture;
     }
-    if (this.userLogged.admin) {
+    if (this.userLogged.isAdmin) {
       this.isAdmin = true;
     }
   }

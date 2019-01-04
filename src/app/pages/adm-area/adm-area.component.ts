@@ -96,6 +96,15 @@ export class AdmAreaComponent implements OnInit {
     // })
   }
 
+  removeBrandFromDB(brand) {
+    console.log('DB REMOVE >>>>>>>', brand);
+    this.carsService.removeDBBrand(brand).toPromise().then((retorno: any) => {
+      console.log('RETORNO DELETE >>>>>>', retorno);
+      this.toastr.success(retorno, 'Sucesso!');
+      this.refreshBrandsList();
+    })
+  }
+
   refreshBrandsList() {
     this.carsService.getBrandsDB().toPromise().then((retorno) => {
       console.log('BRANDSDB BACK >>>>>>>>>>>>', retorno);
