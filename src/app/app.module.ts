@@ -23,6 +23,7 @@ import { AddBrandModal } from './modals/add-brand/add-brand.component';
 import { CarsComponent } from './pages/cars/cars.component';
 import { PartsComponent } from './pages/parts/parts.component';
 import { FlipCardComponent } from './components/flip-card/flip-card.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { FlipCardComponent } from './components/flip-card/flip-card.component';
     AddBrandModal,
     CarsComponent,
     PartsComponent,
-    FlipCardComponent
+    FlipCardComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
